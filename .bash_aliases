@@ -18,8 +18,6 @@ alias hgrep='history | grep'
 
 alias newbg='~/Documents/git/linux_background/linux_background.sh'
 
-alias weka='java -Xmx1000M -jar ~/Documents/ml/weka-3-6-12/weka.jar &'
-
 #chrome aliases
 alias chroot='sudo enter-chroot -n precise'
 alias chroot-update='sudo sh -e ~/Downloads/crouton -u -n precise'

@@ -92,14 +92,18 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
+echo $EUID
 function __setprompt {
 	local GREEN="\[\033[32;1m\]"
 	local CYAN="\[\033[36;1m\]"
 	local NO_COLOR="\[\033[0m\]"
 	local RED="\[\033[31;1m\]"
 	local YELLOW="\[\033[33;1m\]"
-	if [[ $EUID -ne 0 ]]; then 
+	local PURPLE="\[\033[35;1m\]"
+	local WHITE="\[\033[37;1m\]"
+	if [[ $USER = "chronos" ]]; then
+		PS1="$PURPLE[\A]$WHITE[\u: \w]\\$ $NO_COLOR"
+	elif [[ $EUID -ne 0 ]]; then 
     		PS1="$CYAN[\A]$GREEN[\u: \w]\\$ $NO_COLOR"
 	else
     		PS1="$YELLOW[\A]$RED[\u: \w]\\$ $NO_COLOR"
