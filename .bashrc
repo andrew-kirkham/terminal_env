@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-PREVRET=$?
+export PROMPT_COMMAND=__setprompt
 GREEN="\[\033[32;1m\]"
 CYAN="\[\033[36;1m\]"
 NO_COLOR="\[\033[0m\]"
@@ -10,9 +10,10 @@ YELLOW="\[\033[33;1m\]"
 PURPLE="\[\033[35;1m\]"
 WHITE="\[\033[37;1m\]"
 LIGHTGRAY="\[\033[0;37m\]"
-
+BLUE="\[\033[34;1m\]"
 function __setprompt () {
-	if [ $? -eq 0 ]; then
+	local PREVRET=$?
+	if [ $PREVRET -eq '0' ]; then
 		STATUS="$GREEN[+]"
 	else
 		STATUS="$RED[-]"
