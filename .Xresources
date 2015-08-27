@@ -1,0 +1,34 @@
+XTerm*background:         black
+XTerm*foreground:         white
+XTerm*cursorColor:        white
+XTerm*VT100.geometry:     80x25
+
+XTerm*dynamicColors:      true
+XTerm*utf8:               2
+XTerm*eightBitInput:      true
+XTerm*saveLines:          512
+XTerm*scrollKey:          true
+XTerm*scrollTtyOutput:    false
+XTerm*scrollBar:          true
+XTerm*rightScrollBar:     true
+XTerm*jumpScroll:         true
+XTerm*multiScroll:        true
+XTerm*toolBar:            false
+
+UXTerm*background:         black
+UXTerm*foreground:         white
+UXTerm*cursorColor:        green
+UXTerm*VT100.geometry:     180x60
+
+UXTerm*dynamicColors:      true
+UXTerm*utf8:               2
+UXTerm*eightBitInput:      true
+UXTerm*saveLines:          512
+UXTerm*scrollKey:          true
+UXTerm*scrollTtyOutput:    false
+UXTerm*scrollBar:          true
+UXTerm*rightScrollBar:     true
+UXTerm*jumpScroll:         true
+UXTerm*multiScroll:        true
+UXTerm*toolBar:            true
+
