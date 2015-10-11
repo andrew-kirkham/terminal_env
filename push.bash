@@ -2,7 +2,6 @@
 
 cp ~/.bashrc .
 cp ~/.bash_aliases .
-git add .bash*
-git add pu*
+cp ~/.Xresources .
 git commit -m 'auto updating .bash*'
 

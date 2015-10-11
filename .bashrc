@@ -73,12 +73,13 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-PATH="$PATH":~/Downloads/jdk/bin
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# source any extra items that are not specific to all computers
+if [ -f ~/.bashrc_extra ]; then
+    . ~/.bashrc_extra
+fi
+

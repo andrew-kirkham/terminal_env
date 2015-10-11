@@ -20,8 +20,17 @@ alias hgrep='history | grep'
 alias myip='curl ifconfig.me/ip'
 
 alias newbg='~/Documents/git/linux_background/linux_background.sh'
+alias xterm='uxterm'
+
+alias nessus='sudo /etc/init.d/nessusd start; firefox https://localhost:8834 &'
+alias openports='netstat -tulnp'
 
 #chrome aliases
 alias chroot='sudo enter-chroot -n precise'
 alias chroot-update='sudo sh -e ~/Downloads/crouton -u -n precise'
 alias start='sudo startxfce4'
+
+mkcd () {
+   mkdir "$1"
+   cd "$1"
+}
