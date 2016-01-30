@@ -12,10 +12,12 @@ alias cduu='cd ../..'
 alias cdgit='cd ~/Documents/git'
 
 #ls aliases
+alias l='ls'
 alias ls='ls --color=auto'
 alias ll='ls -alFh'
 alias la='ls -Ah'
 alias ldir='ls -d */'
+alias lh='ls -a | egrep "^\."'
 
 #sudo aliases
 alias update='apt-get update && apt-get upgrade'
