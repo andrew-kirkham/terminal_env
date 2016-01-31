@@ -4,7 +4,9 @@
 
 # aliases for general use
 alias aliases='vim ~/.bash_aliases'
+alias funcs='alias && typeset -F'
 alias reload='source ~/.bashrc'
+alias e='exit'
 
 #cd aliases
 alias cdu='cd ..'
