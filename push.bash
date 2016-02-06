@@ -3,5 +3,8 @@
 cp ~/.bashrc .
 cp ~/.bash_aliases .
 cp ~/.Xresources .
-git commit -m 'auto updating .bash*'
+cp ~/.vimrc .
+cp ~/.gitconfig .
+
+git commit -m 'auto updating configurations files*'
 
