@@ -1,12 +1,8 @@
 #!/bin/bash
 
 #copy over the config files to the user directory
-cp .bash* ~/.
-cp .X* ~/.
-cp .gitconfig ~/.
-cp .vimrc ~/.
-cp *.vim ~/.vim/plugins/
-
+cp ../configs/* ~/.
+cp ../vim_plugins/* ~/.vim/plugins/
 
 #source the bashrc to reload bash stuff
 source ~/.bashrc
