@@ -9,7 +9,7 @@ cp ~/.Xresources configs
 cp ~/.vimrc configs
 cp ~/.gitconfig configs
 
-cp ~/.vim/plugins vim_plugins
+cp ~/.vim/plugin/* vim_plugins
 
 git add *
 git status
