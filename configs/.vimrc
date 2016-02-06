@@ -9,6 +9,8 @@
 :set softtabstop=4
 :set autoindent
 
+set runtimepath+=$HOME/.vim/plugins
+
 :filetype plugin on
 :filetype indent plugin on
 
