@@ -6,5 +6,5 @@ cp ~/.Xresources .
 cp ~/.vimrc .
 cp ~/.gitconfig .
 
-git commit -m 'auto updating configurations files*'
-
+git add *
+git status

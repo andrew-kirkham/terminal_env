@@ -6,6 +6,15 @@ cp .X* ~/.
 cp .gitconfig ~/.
 cp .vimrc ~/.
 
+#make vim directories and put plugins in
+mkdir ~/.vim
+mkdir ~/.vim/plugins
+
+cp *.vim ~/.vim/plugins
+
+#make the extra file
+touch ~/.bashrc_extra
+
 #source the bashrc to reload bash stuff
 source ~/.bashrc
 
