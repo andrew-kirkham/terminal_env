@@ -8,3 +8,5 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg = !"git lg1"
 ll = log --pretty=format:"%C(yellow)%h%C(green)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --all --numstat
 
+[push]
+	default = simple
