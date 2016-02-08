@@ -13,39 +13,45 @@ LIGHTGRAY="\[\033[0;37m\]"
 BLUE="\[\033[34;1m\]"
 
 function __setprompt () {
-	local PREVRET=$?
-	if [ $PREVRET -eq '0' ]; then
-		STATUS="$GREEN[+]"
-	else
-		STATUS="$RED[-]"
-	fi
-	if [[ $USER = "chronos" ]]; then
-		TIME_COLOR=$PURPLE
-		USER_DIR_COLOR=$WHITE
-	elif [[ $EUID -ne 0 ]]; then 
-    		TIME_COLOR=$CYAN
-		USER_DIR_COLOR=$GREEN
-	else
-		TIME_COLOR=$YELLOW
-		USER_DIR_COLOR=$RED
-	fi
-	
-        ANGLEDOWN="${LIGHTGRAY}\342\224\214"
-	ANGLEUP="${LIGHTGRAY}\342\224\224"
-	HYPHEN="\342\224\200"
-        DIRECTORY=${USER_DIR_COLOR}"[\u: \w]"
-        TIME=${TIME_COLOR}"[\T]"
-        GIT_BRANCH=${WHITE}$(__git_ps1)${NO_COLOR}
+    local PREVRET=$?
+    if [ $PREVRET -eq '0' ]; then
+        STATUS="$GREEN[+]"
+    else
+        STATUS="$RED[-]"
+    fi
+    if [[ $USER = "chronos" ]]; then
+        TIME_COLOR=$PURPLE
+        USER_DIR_COLOR=$WHITE
+    elif [[ $EUID -ne 0 ]]; then 
+        TIME_COLOR=$CYAN
+        USER_DIR_COLOR=$GREEN
+    else
+        TIME_COLOR=$YELLOW
+        USER_DIR_COLOR=$RED
+    fi
+    
+    ANGLEDOWN="${LIGHTGRAY}\342\224\214"
+    ANGLEUP="${LIGHTGRAY}\342\224\224"
+    HYPHEN="\342\224\200"
+    DIRECTORY=${USER_DIR_COLOR}"[\u: \w]"
+    TIME=${TIME_COLOR}"[\T]"
 
-	#new line before each command
-	PS1="\n"
-	#set up the first line with colors
-        PS1=${PS1}${ANGLEDOWN}${STATUS}${TIME}${DIRECTORY}$GIT_BRANCH
-	#new line to type the commands
-	PS1=${PS1}"\n"
-	#set up the second line
-	PS1=${PS1}${ANGLEUP}${HYPHEN}"> ${NO_COLOR}"
+    #show the git branch, dirty status
+    GIT_BRANCH=${WHITE}$(__git_ps1)${NO_COLOR}
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWUPSTREAM="auto"
+
+    #new line before each command
+    PS1="\n"
+    #set up the first line with colors
+    PS1=${PS1}${ANGLEDOWN}${STATUS}${TIME}${DIRECTORY}$GIT_BRANCH
+    #new line to type the commands
+    PS1=${PS1}"\n"
+    #set up the second line
+    PS1=${PS1}${ANGLEUP}${HYPHEN}"> ${NO_COLOR}"
 }
+
+source ~/.bash_git
 
 __setprompt
 # don't put duplicate lines or lines starting with space in the history.
