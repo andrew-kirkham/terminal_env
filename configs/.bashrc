@@ -39,8 +39,9 @@ function __setprompt () {
     #show the git branch, dirty status
     GIT_BRANCH=${WHITE}$(__git_ps1)${NO_COLOR}
     GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWUPSTREAM="auto"
-
+    GIT_PS1_SHOWUPSTREAM="verbose"
+    GIT_PS1_SHOWCOLORHINTS=true
+    
     #new line before each command
     PS1="\n"
     #set up the first line with colors
@@ -83,9 +84,13 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+
 include /etc/bash_completion
 include ~/.bash_aliases
 include ~/.bashrc_extra
 include ~/.bash_git
 
 __setprompt
+
