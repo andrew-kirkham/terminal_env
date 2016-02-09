@@ -1,5 +1,24 @@
 #!/bin/bash
-# bash prompt support for git that is much more streamlined
+# Bash prompt support for git that is much more targeted
+#
+# This requires unicode support in the terminal. Every status icon 
+# is a unicode character
+#
+# This will automatically check if the user is in a repo
+# If they are not, this will not display anything
+#
+# Assumptions:
+#   The remote is always named origin
+#   You are not rebasing
+#   This is called on every PS1 prompt set
+#
+# Will display: 
+#   The commits ahead/behind origin (marked by up or down arrow, checkmark indicates they are equal)
+#   The number of untracked files (marked by a ?)
+#   The number of added/modified/deleted files (marked by a hammer)
+#
+# TODO:
+#   conflicted marker
 
 commit_status() {
     ahead="$(git rev-list --count origin..HEAD)"
