@@ -52,14 +52,14 @@ working_tree_status() {
         if [[ $file =~ ^(??) ]];then
             let untracked+=1
         fi
-        if [[ $file =~ ^A ]] || 
-            [[ $file =~ ^D ]] ||
-            [[ $file =~ ^M ]]; then
+        if [[ $file =~ ^A ]] || #add
+            [[ $file =~ ^D ]] || #delete
+            [[ $file =~ ^R ]] || #rename
+            [[ $file =~ ^M ]]; then #modify
             let modified+=1
         fi
-        if [[ $file =~ ^( A) ]] || 
-            [[ $file =~ ^( D) ]] ||
-            [[ $file =~ ^( M) ]]; then
+        if [[ $file =~ ^( D) ]] || #unstaged delete
+            [[ $file =~ ^( M) ]]; then #unstaged modify
             let unstaged+=1
         fi
     done
