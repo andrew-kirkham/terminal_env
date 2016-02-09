@@ -37,11 +37,8 @@ function __setprompt () {
     TIME=${TIME_COLOR}"[\T]"
 
     #show the git branch, dirty status
-    GIT_BRANCH=${WHITE}$(__git_ps1)${NO_COLOR}
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWUPSTREAM="verbose"
-    GIT_PS1_SHOWCOLORHINTS=true
-    
+    include ~/.bash_git_mine
+    GIT_BRANCH=${WHITE}$GIT_PROMPT${NO_COLOR} 
     #new line before each command
     PS1="\n"
     #set up the first line with colors
@@ -91,6 +88,5 @@ include /etc/bash_completion
 include ~/.bash_aliases
 include ~/.bashrc_extra
 include ~/.bash_git
-
 __setprompt
 

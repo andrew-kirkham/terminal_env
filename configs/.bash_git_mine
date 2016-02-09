@@ -1,0 +1,55 @@
+#!/bin/bash
+# bash prompt support for git that is much more streamlined
+
+commit_status() {
+    ahead="$(git rev-list --count origin..HEAD)"
+    behind="$(git rev-list --count HEAD..origin)"
+    commits=""
+
+    if [[ $ahead -ne "0" ]]; then
+        commits="$commits↑$ahead"
+    fi
+    if [[ $behind -ne "0" ]]; then
+        commits="$commits↓$behind"
+    fi
+    if [[ $commits == "" ]]; then
+        commits="✓"
+    fi
+}
+
+working_tree_status() {
+    untracked=0
+    modified=0
+    mods="$(git status --porcelain)"
+    for file in "$mods"; do
+        if [[ $file =~ ^(??) ]];then
+            let untracked+=1
+        fi
+        if [[ $file =~ ^A ]] || 
+            [[ $file =~ ^D ]] ||
+            [[ $file =~ ^M ]]; then
+            let modified+=1
+        fi
+    done
+
+    working_tree=""
+    if [[ $untracked -ne "0" ]]; then
+        working_tree="$working_tree?$untracked"
+    fi
+    if [[ $modified -ne "0" ]]; then
+        working_tree="${working_tree}⚒$modified"
+    fi
+}
+
+is_a_repo="$(git rev-parse --git-dir --is-inside-git-dir \
+    --is-bare-repository --is-inside-work-tree 2>/dev/null)"
+if [ -z "$is_a_repo" ]; then
+    GIT_PROMPT=""
+    return $exit
+fi
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+commit_status
+working_tree_status
+
+GIT_PROMPT="($branch $commits$working_tree)"
