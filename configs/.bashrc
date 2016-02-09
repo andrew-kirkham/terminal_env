@@ -51,9 +51,10 @@ function __setprompt () {
     PS1=${PS1}${ANGLEUP}${HYPHEN}"> ${NO_COLOR}"
 }
 
-source ~/.bash_git
+function include() {
+    [[ -f "$1" ]] && source "$1"
+}
 
-__setprompt
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
@@ -82,17 +83,9 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-#source all the aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-# enable programmable completion features
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
+include /etc/bash_completion
+include ~/.bash_aliases
+include ~/.bashrc_extra
+include ~/.bash_git
 
-# source any extra items that are not specific to all computers
-if [ -f ~/.bashrc_extra ]; then
-    . ~/.bashrc_extra
-fi
-
+__setprompt
