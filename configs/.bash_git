@@ -19,15 +19,16 @@
 #
 # Example:
 #   (master ↑2⚒1?3) - 2 commits ahead, 1 modified file, 3 untracked files
+#
 # TODO:
 #   conflicted marker
 
 COMMITS_AHEAD_MARKER="↑"
 COMMITS_BEHIND_MARKER="↓"
 COMMITS_EQUAL_MARKER="✓"
+UNTRACKED_MARKER="?"
 MODIFIED_MARKER="⚒"
 UNSTAGED_MARKER="※"
-UNTRACKED_MARKER="?"
 
 commit_status() {
     ahead="$(git rev-list --count origin..HEAD)"
@@ -49,8 +50,9 @@ working_tree_status() {
     untracked=0
     modified=0
     unstaged=0
+    IFS=$'\n' 
     mods="$(git status --porcelain)"
-    for file in "$mods"; do
+    for file in ${mods}; do
         if [[ $file =~ ^(??) ]];then
             let untracked+=1
         fi
@@ -67,7 +69,7 @@ working_tree_status() {
     done
     working_tree=""
     if [[ $untracked -ne "0" ]]; then
-        working_tree="${working_tree}${UNTRACKER_MARKER}${untracked}"
+        working_tree="${working_tree}${UNTRACKED_MARKER}${untracked}"
     fi
     if [[ $modified -ne "0" ]]; then
         working_tree="${working_tree}${MODIFIED_MARKER}${modified}"
@@ -83,6 +85,9 @@ if [ -z "$is_a_repo" ]; then
     GIT_PROMPT=""
     return $exit
 fi
+
+#fetch so the downstream can be correct
+(git fetch -q --all & > /dev/null 2>&1)
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 commit_status
