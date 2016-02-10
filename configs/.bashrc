@@ -29,24 +29,18 @@ function __setprompt () {
         TIME_COLOR=$YELLOW
         USER_DIR_COLOR=$RED
     fi
-    
-    ANGLEDOWN="${LIGHTGRAY}\342\224\214"
-    ANGLEUP="${LIGHTGRAY}\342\224\224"
-    HYPHEN="\342\224\200"
+   
     DIRECTORY=${USER_DIR_COLOR}"[\u: \w]"
     TIME=${TIME_COLOR}"[\T]"
 
     #show the git branch, dirty status
     include ~/.bash_git
     GIT_BRANCH=${WHITE}$GIT_PROMPT${NO_COLOR} 
+    
     #new line before each command
     PS1="\n"
-    #set up the first line with colors
-    PS1=${PS1}${ANGLEDOWN}${STATUS}${TIME}${DIRECTORY}$GIT_BRANCH
-    #new line to type the commands
-    PS1=${PS1}"\n"
-    #set up the second line
-    PS1=${PS1}${ANGLEUP}${HYPHEN}"> ${NO_COLOR}"
+    PS1=${PS1}"┌"${STATUS}${TIME}${DIRECTORY}${GIT_BRANCH}"\n"
+    PS1=${PS1}"└─▷ "${NO_COLOR}
 }
 
 function include() {
