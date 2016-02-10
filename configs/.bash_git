@@ -53,17 +53,17 @@ working_tree_status() {
     IFS=$'\n' 
     mods="$(git status --porcelain)"
     for file in ${mods}; do
-        if [[ $file =~ ^(??) ]];then
+        if [[ $file =~ ^"??" ]];then
             let untracked+=1
         fi
-        if [[ $file =~ ^A ]] || #add
-            [[ $file =~ ^D ]] || #delete
-            [[ $file =~ ^R ]] || #rename
-            [[ $file =~ ^M ]]; then #modify
+        if [[ $file =~ ^"A" ]] || #add
+            [[ $file =~ ^"D" ]] || #delete
+            [[ $file =~ ^"R" ]] || #rename
+            [[ $file =~ ^"M" ]]; then #modify
             let staged+=1
         fi
-        if [[ $file =~ ^( D) ]] || #unstaged delete
-            [[ $file =~ ^( M) ]]; then #unstaged modify
+        if [[ $file =~ ^" D" ]] || #unstaged delete
+            [[ $file =~ ^" M" ]]; then #unstaged modify
             let unstaged+=1
         fi
     done
@@ -85,9 +85,6 @@ if [ -z "$is_a_repo" ]; then
     GIT_PROMPT=""
     return $exit
 fi
-
-#fetch so the downstream can be correct
-(git fetch -q --all & > /dev/null 2>&1)
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
 commit_status
