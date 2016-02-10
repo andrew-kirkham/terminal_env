@@ -27,8 +27,8 @@ COMMITS_AHEAD_MARKER="↑"
 COMMITS_BEHIND_MARKER="↓"
 COMMITS_EQUAL_MARKER="✓"
 UNTRACKED_MARKER="?"
-MODIFIED_MARKER="⚒"
-UNSTAGED_MARKER="※"
+STAGED_MARKER="⚒"
+UNSTAGED_MARKER="✘"
 
 commit_status() {
     ahead="$(git rev-list --count origin..HEAD)"
@@ -48,7 +48,7 @@ commit_status() {
 
 working_tree_status() {
     untracked=0
-    modified=0
+    staged=0
     unstaged=0
     IFS=$'\n' 
     mods="$(git status --porcelain)"
@@ -60,7 +60,7 @@ working_tree_status() {
             [[ $file =~ ^D ]] || #delete
             [[ $file =~ ^R ]] || #rename
             [[ $file =~ ^M ]]; then #modify
-            let modified+=1
+            let staged+=1
         fi
         if [[ $file =~ ^( D) ]] || #unstaged delete
             [[ $file =~ ^( M) ]]; then #unstaged modify
@@ -71,8 +71,8 @@ working_tree_status() {
     if [[ $untracked -ne "0" ]]; then
         working_tree="${working_tree}${UNTRACKED_MARKER}${untracked}"
     fi
-    if [[ $modified -ne "0" ]]; then
-        working_tree="${working_tree}${MODIFIED_MARKER}${modified}"
+    if [[ $staged -ne "0" ]]; then
+        working_tree="${working_tree}${STAGED_MARKER}${staged}"
     fi
     if [[ $unstaged -ne "0" ]]; then
         working_tree="${working_tree}${UNSTAGED_MARKER}${unstaged}"
