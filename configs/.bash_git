@@ -31,8 +31,8 @@ STAGED_MARKER="⚒"
 UNSTAGED_MARKER="✘"
 
 commit_status() {
-    ahead="$(git rev-list --count origin..HEAD)"
-    behind="$(git rev-list --count HEAD..origin)"
+    ahead="$(git rev-list --count origin/${branch}..HEAD)"
+    behind="$(git rev-list --count HEAD..origin/${branch})"
     commits=""
 
     if [[ $ahead -ne "0" ]]; then
