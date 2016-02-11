@@ -8,6 +8,10 @@ alias funcs='alias && typeset -F'
 alias reload='source ~/.bashrc'
 alias e='exit'
 
+#cron aliases
+alias crontab='crontab -l'
+alias cron='crontab'
+
 #cd aliases
 alias cdu='cd ..'
 alias cduu='cd ../..'
