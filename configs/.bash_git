@@ -29,6 +29,7 @@ COMMITS_EQUAL_MARKER="✓"
 UNTRACKED_MARKER="?"
 STAGED_MARKER="⚒"
 UNSTAGED_MARKER="✘"
+NO_REMOTE_MARKER="↯"
 
 commit_status() {
     ahead="$(git rev-list --count origin/${branch}..HEAD)"
@@ -87,7 +88,12 @@ if [ -z "$is_a_repo" ]; then
 fi
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
-commit_status
+exists="$(git show-ref origin/${branch})"
+if [ -n "$exists" ]; then
+    commit_status
+else
+    commits="$NO_REMOTE_MARKER"
+fi
 working_tree_status
 
 GIT_PROMPT="($branch $commits$working_tree)"
