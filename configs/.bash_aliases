@@ -32,6 +32,7 @@ alias please='sudo $(history -p !!)'
 #grep aliases
 alias non-ascii='grep -Pn "[\x80-\xFF]"'
 alias hgrep='history | grep'
+alias igrep='grep -ir'
 
 #script aliases
 alias newbg='~/Documents/git/linux_background/linux_background.sh'
