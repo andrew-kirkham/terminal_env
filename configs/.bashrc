@@ -2,15 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 export PROMPT_COMMAND=__setprompt
-GREEN="\[\033[32;1m\]"
-CYAN="\[\033[36;1m\]"
-NO_COLOR="\[\033[0m\]"
-RED="\[\033[31;1m\]"
-YELLOW="\[\033[33;1m\]"
-PURPLE="\[\033[35;1m\]"
-WHITE="\[\033[37;1m\]"
-LIGHTGRAY="\[\033[0;37m\]"
-BLUE="\[\033[34;1m\]"
+include .bash_colors
 
 function __setprompt () {
     local PREVRET=$?
