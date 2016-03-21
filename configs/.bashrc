@@ -2,24 +2,23 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 export PROMPT_COMMAND=__setprompt
-include .bash_colors
 
 function __setprompt () {
     local PREVRET=$?
     if [ $PREVRET -eq '0' ]; then
-        STATUS="$GREEN[+]"
+        STATUS="$BOLD_GREEN[+]"
     else
-        STATUS="$RED[-]"
+        STATUS="$BOLD_RED[-]"
     fi
     if [[ $USER = "chronos" ]]; then
-        TIME_COLOR=$PURPLE
-        USER_DIR_COLOR=$WHITE
+        TIME_COLOR=$BOLD_PURPLE
+        USER_DIR_COLOR=$BOLD_WHITE
     elif [[ $EUID -ne 0 ]]; then 
-        TIME_COLOR=$CYAN
-        USER_DIR_COLOR=$GREEN
+        TIME_COLOR=$BOLD_CYAN
+        USER_DIR_COLOR=$BOLD_GREEN
     else
-        TIME_COLOR=$YELLOW
-        USER_DIR_COLOR=$RED
+        TIME_COLOR=$BOLD_YELLOW
+        USER_DIR_COLOR=$BOLD_RED
     fi
    
     DIRECTORY=${USER_DIR_COLOR}"[\u: \w]"
@@ -27,7 +26,7 @@ function __setprompt () {
 
     #show the git branch, dirty status
     include ~/.bash_git
-    GIT_BRANCH=${WHITE}$GIT_PROMPT${NO_COLOR} 
+    GIT_BRANCH=${BOLD_WHITE}$GIT_PROMPT${NO_COLOR} 
     
     #new line before each command
     PS1="\n"
@@ -73,5 +72,6 @@ export LANGUAGE="en_US.UTF-8"
 include /etc/bash_completion
 include ~/.bash_aliases
 include ~/.bashrc_extra
+include .bash_colors
 __setprompt
 

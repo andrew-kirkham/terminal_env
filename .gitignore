@@ -1,2 +1,5 @@
 #temporary swap file from vim
 *.swp
+
+#bash extra file for specific configs
+*.bash_extra
