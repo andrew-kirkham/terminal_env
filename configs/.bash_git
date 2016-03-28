@@ -87,12 +87,18 @@ if [ -z "$is_a_repo" ]; then
     return $exit
 fi
 
-branch="$(git rev-parse --abbrev-ref HEAD)"
-exists="$(git show-ref origin/${branch})"
-if [ -n "$exists" ]; then
-    commit_status
-else
+ref_exists="$(git show-ref)"
+if [ -z "$ref_exists" ]; then
     commits="$NO_REMOTE_MARKER"
+    branch="detached"
+else
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    exists="$(git show-ref origin/${branch})"
+    if [ -n "$exists" ]; then
+        commit_status
+    else
+        commits="$NO_REMOTE_MARKER"
+    fi
 fi
 working_tree_status
 
