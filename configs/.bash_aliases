@@ -9,13 +9,16 @@ alias reload='source ~/.bashrc'
 alias e='exit'
 
 #cron aliases
-alias crontab='crontab -l'
-alias cron='crontab'
+alias ecron='crontab -e'
 
 #cd aliases
 alias cdu='cd ..'
 alias cduu='cd ../..'
 alias cdgit='cd ~/Documents/git'
+
+#du aliases
+alias dh='du -h'
+alias da='du -a -d 1'
 
 #ls aliases
 alias l='ls'
@@ -26,7 +29,7 @@ alias ldir='ls -d */'
 alias lh='ls -a | egrep "^\."'
 
 #sudo aliases
-alias update='apt-get update && apt-get upgrade'
+alias update='apt-get update && apt-get upgrade -y'
 alias please='sudo $(history -p !!)'
 
 #grep aliases
