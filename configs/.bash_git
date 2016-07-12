@@ -22,6 +22,7 @@
 #
 # TODO:
 #   conflicted marker
+#   branch marker for branches named differently than remote
 
 COMMITS_AHEAD_MARKER="↑"
 COMMITS_BEHIND_MARKER="↓"
@@ -30,6 +31,7 @@ UNTRACKED_MARKER="?"
 STAGED_MARKER="⚒"
 UNSTAGED_MARKER="✘"
 NO_REMOTE_MARKER="↯"
+STASH_MARKER="⎌"
 
 commit_status() {
     ahead="$(git rev-list --count origin/${branch}..HEAD)"
@@ -80,6 +82,14 @@ working_tree_status() {
     fi
 }
 
+stashed() {
+    stashed_changes="$(git stash list | wc -l)"
+    stashed=""
+    if [[ $stashed_changes -ne "0" ]]; then
+        stashed=" ${STASH_MARKER}${stashed_changes}"
+    fi
+}
+
 is_a_repo="$(git rev-parse --git-dir --is-inside-git-dir \
     --is-bare-repository --is-inside-work-tree 2>/dev/null)"
 if [ -z "$is_a_repo" ]; then
@@ -101,5 +111,6 @@ else
     fi
 fi
 working_tree_status
+stashed
 
-GIT_PROMPT="($branch $commits$working_tree)"
+GIT_PROMPT="($branch $commits$working_tree$stashed)"
