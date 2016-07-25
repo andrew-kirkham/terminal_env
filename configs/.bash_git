@@ -21,7 +21,6 @@
 #   (master ↑2⚒1?3) - 2 commits ahead, 1 modified file, 3 untracked files
 #
 # TODO:
-#   conflicted marker
 #   branch marker for branches named differently than remote
 
 COMMITS_AHEAD_MARKER="↑"
@@ -32,6 +31,7 @@ STAGED_MARKER="⚒"
 UNSTAGED_MARKER="✘"
 NO_REMOTE_MARKER="↯"
 STASH_MARKER="⎌"
+CONFLICT_MARKER="⚔"
 
 commit_status() {
     ahead="$(git rev-list --count origin/${branch}..HEAD)"
@@ -53,6 +53,7 @@ working_tree_status() {
     untracked=0
     staged=0
     unstaged=0
+    conflict=0
     IFS=$'\n' 
     mods="$(git status --porcelain)"
     for file in ${mods}; do
@@ -69,6 +70,10 @@ working_tree_status() {
             [[ $file =~ ^" M" ]]; then #unstaged modify
             let unstaged+=1
         fi
+        if [[ $file =~ ^"U" ]] || #conflict
+            [[ $file =~ ^" U" ]]; then
+            let conflict+=1
+        fi
     done
     working_tree=""
     if [[ $untracked -ne "0" ]]; then
@@ -79,6 +84,9 @@ working_tree_status() {
     fi
     if [[ $unstaged -ne "0" ]]; then
         working_tree="${working_tree}${UNSTAGED_MARKER}${unstaged}"
+    fi
+    if [[ $conflict -ne "0" ]]; then
+        working_tree="${working_tree}${CONFLICT_MARKER}${conflict}"
     fi
 }
 
