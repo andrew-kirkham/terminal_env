@@ -28,6 +28,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'jewes/Conque-Shell'
 call vundle#end()
 
 "indent guides
