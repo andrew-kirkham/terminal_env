@@ -118,7 +118,10 @@ else
         commits="$NO_REMOTE_MARKER"
     fi
 fi
-working_tree_status
-stashed
+
+if [[ ${PWD##*/} != ".git" ]]; then
+    working_tree_status
+    stashed
+fi
 
 GIT_PROMPT="($branch $commits$working_tree$stashed)"
