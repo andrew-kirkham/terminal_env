@@ -10,3 +10,7 @@ git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 touch ~/.bashrc_extra
 
 bash updateLocalConfig.bash
+
+sudo bash install.bash
+
+echo "Remember to set the locale to UTF-8!"
