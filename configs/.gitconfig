@@ -13,6 +13,7 @@
     
     st = status
     co = checkout
+    f = fetch --all
 [push]
 	default = simple
 [core]
