@@ -1,15 +1,17 @@
 [user]
 	name = Andrew Kirkham
-	email = akirkham@gogoair.com
+	email = andrew.nicholas.kirkham@gmail.com
 
 [alias]
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --branches --remotes --tags
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --branches --remotes --tags
     lg = !"git lg1"
-    ll = log --pretty=format:"%C(yellow)%h%C(green)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --all --numstat
+    ll = log --pretty=format:"%C(yellow)%h%C(green)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --branches --remotes --tags --numstat
     blg = log --no-merges master.. --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
     bll = log --no-merges master.. --decorate --numstat
     purge = "!f() { git branch -D $1; git push origin --delete $1; }; f"
+    wtf = !"git lg1 --since='yesterday' --author='Andrew Kirkham'"
+    rcm = "!f() { git reset HEAD^; git commit -m $1; }; f"
     
     st = status
     co = checkout
@@ -20,3 +22,8 @@
 	default = simple
 [core]
 	editor = vim
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
