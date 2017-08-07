@@ -1,0 +1,16 @@
+{
+    "workbench.statusBar.visible": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.autoIndent": true,
+    "editor.fontLigatures": false,
+    "editor.formatOnSave": true,
+    "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
+    "files.insertFinalNewline": true,
+    "files.autoSave": "afterDelay",
+    "terminal.external.osxExec": "iTerm.app",
+    "workbench.colorTheme": "Monokai"
+}
