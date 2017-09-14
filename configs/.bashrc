@@ -20,6 +20,11 @@ function __setprompt () {
         TIME_COLOR=$BOLD_YELLOW
         USER_DIR_COLOR=$BOLD_RED
     fi
+    if [[ -n $VIRTUAL_ENV ]]; then
+        V_ENV="${BOLD_PURPLE}[$(basename ${VIRTUAL_ENV})]"
+    else
+        V_ENV=""
+    fi
    
     DIRECTORY=${USER_DIR_COLOR}"[\u: \w]"
     TIME=${TIME_COLOR}"[\T]"
@@ -30,7 +35,7 @@ function __setprompt () {
     
     #new line before each command
     PS1="\n"
-    PS1=${PS1}"┌"${STATUS}${TIME}${DIRECTORY}${GIT_BRANCH}"\n"
+    PS1=${PS1}"┌"${STATUS}${V_ENV}${TIME}${DIRECTORY}${GIT_BRANCH}"\n"
     PS1=${PS1}"└─▷ "${NO_COLOR}
 }
 
@@ -66,12 +71,14 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
+
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
 
 include /etc/bash_completion
 include ~/.bash_aliases
 include ~/.bashrc_extra
-include .bash_colors
+include ~/.bash_colors
 __setprompt
 
