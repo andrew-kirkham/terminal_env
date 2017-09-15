@@ -35,7 +35,7 @@ function __setprompt () {
     
     #new line before each command
     PS1="\n"
-    PS1=${PS1}"┌"${STATUS}${V_ENV}${TIME}${DIRECTORY}${GIT_BRANCH}"\n"
+    PS1=${PS1}"┌"${STATUS}${TIME}${V_ENV}${DIRECTORY}${GIT_BRANCH}"\n"
     PS1=${PS1}"└─▷ "${NO_COLOR}
 }
 
