@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #run the script in the root of the repo
-cd ..
+cd ../bash
 
 cp ~/.bashrc configs
 cp ~/.bash_aliases configs

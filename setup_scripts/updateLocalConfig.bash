@@ -2,7 +2,7 @@
 
 #copy over the config files to the user directory
 cd ..
-cp -a configs/. ~/
+cp -a configs/bash/. ~/
 cp -a vim_plugins/. ~/.vim/plugins/
 
 #source the bashrc to reload bash stuff
