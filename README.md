@@ -1,7 +1,11 @@
-# bash_env
+# terminal_env
 This contains all the configuration files for a unix operating system.
 
+# Environments Supported
+Currently bash and fish have config files
+
 # File descriptions
+FIXME: add fish
 .bash_aliases - common command aliases for the bash shell
 .bash_colors - variables for some PS1/LS colors since they are cryptic
 .bash_git - enables a git repo indicator when the current directory is a git repo
@@ -11,6 +15,7 @@ This contains all the configuration files for a unix operating system.
 .Xresources - config for xTerm, does nothing if not using xTerm
 
 # Usage
+FIXME: Only for bash
 The setup_scripts directory contains scripts for easy usage and updating of configs
 firstSetup.bash - copies every config over to the appropriate directory. clones necessary repos
 updateLocalConfig.bash - updates all local configs with those in this git repo
