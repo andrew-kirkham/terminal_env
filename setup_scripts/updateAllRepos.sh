@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 #Fetches updates for all git repositories located in a specified location
 #This will not work if your repository has spaces
 

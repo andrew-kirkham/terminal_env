@@ -3,14 +3,46 @@
     "files.trimTrailingWhitespace": true,
     "editor.scrollBeyondLastLine": false,
     "editor.minimap.renderCharacters": false,
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
     "editor.autoIndent": true,
     "editor.fontLigatures": false,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
     "files.insertFinalNewline": true,
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "onFocusChange",
     "terminal.external.osxExec": "iTerm.app",
-    "workbench.colorTheme": "Monokai"
+    "workbench.colorTheme": "Monokai",
+    "extensions.ignoreRecommendations": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.pyc": true,
+        "**/.gradle": true,
+        "**/.idea": true,
+        "**/node_modules": true,
+        "**/__pycache__": true,
+        "**/.cache": true,
+        "**/.vscode": true
+    },
+    "editor.fontFamily": "Knack Nerd Font",
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.fontFamily": "Knack Nerd Font",
+    "[javascript]": {},
+    "workbench.panel.defaultLocation": "bottom",
+    "workbench.statusBar.feedback.visible": false,
+    "java.saveActions.organizeImports": true,
+    "gitProjectManager.maxDepthRecursion": 1,
+    "gitProjectManager.searchInsideProjects": false,
+    "[python]": {
+
+    },
+    "[java]": {
+
+    },
+    "window.newWindowDimensions": "inherit",
+    "zenMode.hideTabs": false
 }
