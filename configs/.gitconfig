@@ -18,6 +18,11 @@
     f = fetch --all
     cm = commit -m
     cam = commit -am
+    a = add .
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
+    master = checkout master
 [push]
 	default = simple
 [core]
