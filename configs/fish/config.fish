@@ -8,4 +8,10 @@ set -g theme_project_dir_length 3
 set -g theme_display_git_untracked yes
 set -g theme_show_exit_status yes
 set -g theme_display_virtualenv no
-set -g theme_display_git_ahead_verbose yes
+set -g theme_display_git_ahead_verbose yet
+set -g theme_display_git_master_branch yes
+set -g theme_display_git_untracked yes
+set -g theme_display_k8s_context yes
+
+status --is-interactive; and source (rbenv init -|psub)
+
