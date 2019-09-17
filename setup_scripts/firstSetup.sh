@@ -13,6 +13,7 @@ mkdir ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 
 ./updateLocalConfig.sh
+./updateCodeSettings.sh
 
 if [ "$1" = "fish" ]; then
     echo "Installing fish"

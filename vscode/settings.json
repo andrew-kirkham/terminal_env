@@ -3,16 +3,14 @@
     "files.trimTrailingWhitespace": true,
     "editor.scrollBeyondLastLine": false,
     "editor.minimap.renderCharacters": false,
-    "editor.formatOnType": false,
-    "editor.formatOnPaste": false,
+    "editor.formatOnType": true,
     "editor.autoIndent": true,
     "editor.fontLigatures": false,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
     "files.insertFinalNewline": true,
     "files.autoSave": "onFocusChange",
     "terminal.external.osxExec": "iTerm.app",
-    "workbench.colorTheme": "Monokai",
     "extensions.ignoreRecommendations": true,
     "files.exclude": {
         "**/.git": true,
@@ -26,23 +24,43 @@
         "**/node_modules": true,
         "**/__pycache__": true,
         "**/.cache": true,
-        "**/.vscode": true
+        "**/.vscode": true,
+        "**/env": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     },
-    "editor.fontFamily": "Knack Nerd Font",
+    "editor.fontFamily": "Hack Nerd Font",
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-    "terminal.integrated.fontFamily": "Knack Nerd Font",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
     "[javascript]": {},
     "workbench.panel.defaultLocation": "bottom",
     "workbench.statusBar.feedback.visible": false,
     "java.saveActions.organizeImports": true,
     "gitProjectManager.maxDepthRecursion": 1,
     "gitProjectManager.searchInsideProjects": false,
-    "[python]": {
-
-    },
-    "[java]": {
-
-    },
+    "[java]": {},
     "window.newWindowDimensions": "inherit",
-    "zenMode.hideTabs": false
+    "zenMode.hideTabs": false,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.defaultDateStyle": "absolute",
+    "python.formatting.blackPath": "/usr/local/bin/black",
+    "breadcrumbs.enabled": true,
+    "python.formatting.provider": "black",
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "workbench.colorCustomizations": {
+        "diffEditor.insertedTextBackground": "#3d5c0080",
+    },
+    "window.zoomLevel": 0,
+    "git.autofetch": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Monokai",
 }
