@@ -13,6 +13,7 @@
     purge = "!f() { git branch -D $1; git push origin --delete $1; }; f"
     wtf = !"git lg1 --numstat --since='yesterday' --author='Andrew Kirkham'"
     rcm = "!f() { git reset HEAD^; git commit -m $1; }; f"
+    pushup = "!f() { git push -u origin  $(git rev-parse --abbrev-ref HEAD); }; f"
     
     st = status
     co = checkout
@@ -25,6 +26,10 @@
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
     master = checkout master
+    bd = branch -d
+    bdd = branch -D
+    merge = merge --no-edit
+
 [push]
 	default = simple
 [core]

@@ -4,12 +4,12 @@
     "editor.scrollBeyondLastLine": false,
     "editor.minimap.renderCharacters": false,
     "editor.formatOnType": true,
-    "editor.autoIndent": true,
+    "editor.autoIndent": "full",
     "editor.fontLigatures": false,
     "editor.formatOnSave": true,
     "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
     "files.insertFinalNewline": true,
-    "files.autoSave": "onFocusChange",
+    "files.autoSave": "afterDelay",
     "terminal.external.osxExec": "iTerm.app",
     "extensions.ignoreRecommendations": true,
     "files.exclude": {
@@ -62,5 +62,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.jediEnabled": false,
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Monokai",
+    "search.useGlobalIgnoreFiles": true,
+    "java.semanticHighlighting.enabled": true,
 }
