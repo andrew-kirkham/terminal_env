@@ -40,6 +40,9 @@ The setup_scripts directory contains scripts for easy usage and updating of conf
 * config.fish - configuration and theme options
 * functions/* - fish aliases/functions
 
+# Dockerfile
+This file I built to deploy along side other containers (such as in Kubernetes) to debug pods within the same namespace/context.
+It basically installs this setup along with some other debugging tools to help when pods aren't accessible outside the cluster.
 
 # Future Work
 * Figure out where to put vscode settings
