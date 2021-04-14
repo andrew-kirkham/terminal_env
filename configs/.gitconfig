@@ -1,6 +1,6 @@
 [user]
-	name = Andrew Kirkham
-	email = andrew.nicholas.kirkham@gmail.com
+    name = Andrew Kirkham
+    email = andrew.nicholas.kirkham@gmail.com
 
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --branches --remotes --tags
@@ -13,8 +13,11 @@
     purge = "!f() { git branch -D $1; git push origin --delete $1; }; f"
     wtf = !"git lg1 --numstat --since='yesterday' --author='Andrew Kirkham'"
     rcm = "!f() { git reset HEAD^; git commit -m $1; }; f"
+    # push a branch and set the upstream to the same name
     pushup = "!f() { git push -u origin  $(git rev-parse --abbrev-ref HEAD); }; f"
-    
+    # delete local branches
+    dlb = !"git branch | grep -v master | xargs -I btd git branch -D btd"
+
     st = status
     co = checkout
     f = fetch --all
@@ -31,13 +34,13 @@
     merge = merge --no-edit
 
 [push]
-	default = simple
+    default = simple
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+    editor = vim
+    excludesfile = ~/.gitignore_global
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
     required = true
 
